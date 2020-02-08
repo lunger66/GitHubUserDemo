@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.hcl.githubuserdemo.services.models.GitHubUserDetail"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageViewClose"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_close_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageViewHeadPicture"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="80dp"
+            app:imageUrl="@{user.avatarUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="#f00" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/circleImageViewHeadPicture"
+            app:layout_constraintStart_toStartOf="@+id/circleImageViewHeadPicture"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageViewHeadPicture"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/textViewBio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.bio}"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/circleImageViewHeadPicture"
+            app:layout_constraintStart_toStartOf="@+id/circleImageViewHeadPicture"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName"
+            tools:text="Bio" />
+
+        <View
+            android:id="@+id/viewLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:layout_marginTop="12dp"
+            android:background="#595252"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBio"/>
+
+        <ImageView
+            android:id="@+id/imageViewPerson"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="26dp"
+            android:src="@drawable/ic_person_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewPerson"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPerson"
+            app:layout_constraintTop_toTopOf="@+id/imageViewPerson">
+
+            <TextView
+                android:id="@+id/textViewLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.login}"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/textViewBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/background_3f80dc_radius_80"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Badge"
+                android:textColor="@android:color/white"
+                app:showBadge="@{user.siteAdmin}" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewLocation"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="26dp"
+            android:src="@drawable/ic_location_on_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPerson" />
+
+        <TextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.location}"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewLocation"
+            app:layout_constraintStart_toEndOf="@+id/imageViewLocation"
+            app:layout_constraintTop_toTopOf="@+id/imageViewLocation"
+            tools:text="Name" />
+
+        <ImageView
+            android:id="@+id/imageViewBlog"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="26dp"
+            android:src="@drawable/ic_link_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewLocation" />
+
+        <TextView
+            android:id="@+id/textViewBlogUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.blog}"
+            android:textColor="#3f80dc"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewBlog"
+            app:layout_constraintStart_toEndOf="@+id/imageViewBlog"
+            app:layout_constraintTop_toTopOf="@+id/imageViewBlog"
+            tools:text="Name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GitHubUserDemo</string>
+    <string name="server_base_url">https://api.github.com/</string>
+</resources>
