@@ -14,8 +14,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-//import com.bamideleoguntuga.retrofitpagination.converter.PolymorphicCustomConverter;
-//import com.bamideleoguntuga.retrofitpagination.services.models.AccessToken;
 
 public class ServiceGenerator {
 

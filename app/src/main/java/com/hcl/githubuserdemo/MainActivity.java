@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.hcl.githubuserdemo.adapters.RecyclerViewAdapter;
 import com.hcl.githubuserdemo.services.GitHubService;
@@ -38,14 +37,9 @@ public class MainActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         List<GitHubUser> body = response.body();
 
-//                        for (GitHubUser repo : body) {
-////                            values.add(new PaginationItem(repo.getId(), repo.getName()));
-//                        }
-
                         recyclerViewAdapter.addItem(body);
                         headers = response.headers();
-//                        adapter.notifyDataSetChanged();
-//                        fetchReposNextPage(headers);
+
                     } else {
                         Log.e("Request failed: ", "Cannot request GitHub repositories");
                     }
@@ -62,16 +56,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewAdapter = new RecyclerViewAdapter(this);
-        recyclerView.setAdapter(recyclerViewAdapter);
-
-        service = ServiceGenerator.createService(GitHubService.class);
+        initView();
 
         Call<List<GitHubUser>> call = service.userList(20);
         call.enqueue(callback);
 
+    }
+
+    private void initView(){
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewAdapter = new RecyclerViewAdapter(this);
+        recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
@@ -83,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        service = ServiceGenerator.createService(GitHubService.class);
     }
 
     private void fetchReposNextPage(Headers headers) {
