@@ -1,12 +1,8 @@
 package com.hcl.githubuserdemo.viewmode;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
 
-import com.hcl.githubuserdemo.databinding.ActivityUserDetailBinding;
+import androidx.databinding.ObservableField;
+
 import com.hcl.githubuserdemo.services.GitHubService;
 import com.hcl.githubuserdemo.services.ServiceGenerator;
 import com.hcl.githubuserdemo.services.models.GitHubUserDetail;
@@ -17,29 +13,10 @@ import retrofit2.Response;
 
 public class UserDetailViewMode {
 
-    private ActivityUserDetailBinding activityUserDetailBinding;
     private String url = "";
+    public ObservableField<GitHubUserDetail> gitHubUserDetail = new ObservableField<>();
 
-    public UserDetailViewMode(ActivityUserDetailBinding activityUserDetailBinding, final Activity activity, String login) {
-        this.activityUserDetailBinding = activityUserDetailBinding;
-
-        activityUserDetailBinding.imageViewClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.finish();
-            }
-        });
-
-        activityUserDetailBinding.textViewBlogUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!TextUtils.isEmpty(url)){
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    activity.startActivity(intent);
-                }
-
-            }
-        });
+    public UserDetailViewMode(String login) {
 
         getUser(login);
     }
@@ -50,7 +27,7 @@ public class UserDetailViewMode {
             @Override
             public void onResponse(Call<GitHubUserDetail> call, Response<GitHubUserDetail> response) {
                 if (response.isSuccessful()) {
-                    activityUserDetailBinding.setUser(response.body());
+                    gitHubUserDetail.set(response.body());
                     url = response.body().getBlog();
                 }
             }
@@ -63,4 +40,11 @@ public class UserDetailViewMode {
 
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

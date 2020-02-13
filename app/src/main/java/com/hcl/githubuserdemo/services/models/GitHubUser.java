@@ -218,8 +218,8 @@ public class GitHubUser {
                 .into(imageView);
     }
 
-    @BindingAdapter("showBadge")
-    public static void showBadge(TextView textView, boolean b) {
-        textView.setVisibility(b ? View.VISIBLE : View.GONE);
-    }
+//    @BindingAdapter("showBadge")
+//    public static void showBadge(TextView textView, boolean b) {
+//        textView.setVisibility(b ? View.VISIBLE : View.GONE);
+//    }
 }

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="user"
-            type="com.hcl.githubuserdemo.services.models.GitHubUserDetail"/>
+            type="com.hcl.githubuserdemo.viewmode.UserDetailViewMode"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +32,7 @@
             android:layout_height="180dp"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="80dp"
-            app:imageUrl="@{user.avatarUrl}"
+            app:imageUrl="@{user.gitHubUserDetail.avatarUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +42,7 @@
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.name}"
+            android:text="@{user.gitHubUserDetail.name}"
             android:layout_marginTop="5dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/circleImageViewHeadPicture"
@@ -53,7 +54,7 @@
             android:id="@+id/textViewBio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.bio}"
+            android:text="@{user.gitHubUserDetail.bio}"
             android:layout_marginTop="5dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/circleImageViewHeadPicture"
@@ -99,7 +100,7 @@
                 android:id="@+id/textViewLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user.login}"
+                android:text="@{user.gitHubUserDetail.login}"
                 tools:text="Name" />
 
             <TextView
@@ -113,7 +114,7 @@
                 android:paddingRight="8dp"
                 android:text="Badge"
                 android:textColor="@android:color/white"
-                app:showBadge="@{user.siteAdmin}" />
+                android:visibility="@{user.gitHubUserDetail.siteAdmin ? View.VISIBLE : View.GONE}" />
 
         </LinearLayout>
 
@@ -132,7 +133,7 @@
             android:id="@+id/textViewLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.location}"
+            android:text="@{user.gitHubUserDetail.location}"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewLocation"
@@ -155,7 +156,7 @@
             android:id="@+id/textViewBlogUrl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.blog}"
+            android:text="@{user.gitHubUserDetail.blog}"
             android:textColor="#3f80dc"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"

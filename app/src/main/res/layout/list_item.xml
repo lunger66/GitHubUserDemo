@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
 
         <variable
             name="user"
@@ -59,7 +60,7 @@
                 android:paddingRight="8dp"
                 android:textColor="@android:color/white"
                 android:text="Badge"
-                app:showBadge="@{user.siteAdmin}"/>
+                android:visibility="@{user.siteAdmin ? View.VISIBLE : View.GONE}"/>
 
         </LinearLayout>
 
