@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <!-- import type="android.view.View" 是為了   android:visibility="@{user.gitHubUserDetail.siteAdmin ? View.VISIBLE : View.GONE}"     -->
         <import type="android.view.View"/>
+
         <variable
             name="user"
             type="com.hcl.githubuserdemo.viewmode.UserDetailViewMode"/>
@@ -129,17 +131,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewPerson" />
 
-        <TextView
-            android:id="@+id/textViewLocation"
+        <com.hcl.githubuserdemo.ui.MyCustomView
+            android:id="@+id/textViewTestLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.gitHubUserDetail.location}"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewLocation"
             app:layout_constraintStart_toEndOf="@+id/imageViewLocation"
             app:layout_constraintTop_toTopOf="@+id/imageViewLocation"
-            tools:text="Name" />
+            app:myViewModel="@{user}"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/textViewLocation"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@{user.gitHubUserDetail.location}"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/imageViewLocation"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/imageViewLocation"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/imageViewLocation"-->
+<!--            tools:text="Name" />-->
 
         <ImageView
             android:id="@+id/imageViewBlog"
