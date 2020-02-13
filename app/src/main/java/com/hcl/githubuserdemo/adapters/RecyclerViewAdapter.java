@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hcl.githubuserdemo.MainActivity;
+import com.hcl.githubuserdemo.activity.MainActivity;
 import com.hcl.githubuserdemo.R;
-import com.hcl.githubuserdemo.UserDetailActivity;
+import com.hcl.githubuserdemo.activity.UserDetailActivity;
 import com.hcl.githubuserdemo.databinding.ListItemBinding;
 import com.hcl.githubuserdemo.services.models.GitHubUser;
 
