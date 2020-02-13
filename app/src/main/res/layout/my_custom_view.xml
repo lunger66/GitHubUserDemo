@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="myViewModel"
+            name="user"
             type="com.hcl.githubuserdemo.viewmode.UserDetailViewMode" />
     </data>
 
@@ -15,7 +15,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{myViewModel.gitHubUserDetail.location}" />
+        android:text="@{user.gitHubUserDetail.location}" />
 
 </LinearLayout>
 

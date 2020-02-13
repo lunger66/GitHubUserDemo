@@ -26,9 +26,10 @@ public class MyCustomView extends LinearLayout {
 
     private void init(Context context){
         LayoutInflater inflater = LayoutInflater.from(context);
+        mBinding = MyCustomViewBinding.inflate(inflater, this, true);
     }
 
-    public void setMyViewModel(UserDetailViewMode obj) {
-        mBinding.setMyViewModel(obj);
+    public void setUser(UserDetailViewMode obj) {
+        mBinding.setUser(obj);
     }
 }
