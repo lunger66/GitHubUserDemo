@@ -1,7 +1,6 @@
 package com.hcl.githubuserdemo.adapters;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcl.githubuserdemo.activity.MainActivity;
 import com.hcl.githubuserdemo.R;
-import com.hcl.githubuserdemo.activity.UserDetailActivity;
+import com.hcl.githubuserdemo.activity.UserDetailActivityMVVM;
+import com.hcl.githubuserdemo.activity.UserDetailActivityMVP;
 import com.hcl.githubuserdemo.databinding.ListItemBinding;
 import com.hcl.githubuserdemo.services.models.GitHubUser;
 
@@ -62,7 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         }
 
-        void bind(final GitHubUser user, int position){
+        void bind(final GitHubUser user, final int position){
             listItemBinding.setUser(user);
             listItemBinding.executePendingBindings();
             listItemBinding.textViewNum.setText(String.valueOf(position + 1));
@@ -70,9 +70,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 @Override
                 public void onClick(View v) {
 
-                    Log.e(" *** ","** onClick **");
-
-                    Intent intent = new Intent(mainActivity, UserDetailActivity.class);
+                    Intent intent = new Intent(mainActivity, (position % 2) == 1 ? UserDetailActivityMVP.class : UserDetailActivityMVVM.class);
                     intent.putExtra("login",user.getLogin());
                     mainActivity.startActivity(intent);
 

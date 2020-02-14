@@ -13,7 +13,7 @@ import com.hcl.githubuserdemo.R;
 import com.hcl.githubuserdemo.databinding.ActivityUserDetailBinding;
 import com.hcl.githubuserdemo.viewmode.UserDetailViewMode;
 
-public class UserDetailActivity extends AppCompatActivity {
+public class UserDetailActivityMVVM extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
