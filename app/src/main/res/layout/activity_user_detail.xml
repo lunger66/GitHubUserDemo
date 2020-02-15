@@ -140,8 +140,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageViewLocation"
             app:layout_constraintStart_toEndOf="@+id/imageViewLocation"
             app:layout_constraintTop_toTopOf="@+id/imageViewLocation"
-            app:user="@{user}"/>
-        <!-- app:user 是在MyCustomView裏有 setUser -->
+            app:userBinding="@{user}"/>
+        <!-- app:userBinding 是在MyCustomView裏有 setUserBinding -->
 
 <!--        <TextView-->
 <!--            android:id="@+id/textViewLocation"-->

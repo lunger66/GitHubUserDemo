@@ -1,12 +1,5 @@
 package com.hcl.githubuserdemo.services.models;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.databinding.BindingAdapter;
-
-import com.bumptech.glide.Glide;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -211,15 +204,4 @@ public class GitHubUser {
         this.siteAdmin = siteAdmin;
     }
 
-    @BindingAdapter("imageUrl")
-    public static void loadImage(ImageView imageView, String picUrl) {
-        Glide.with(imageView.getContext())
-                .load(picUrl)
-                .into(imageView);
-    }
-
-//    @BindingAdapter("showBadge")
-//    public static void showBadge(TextView textView, boolean b) {
-//        textView.setVisibility(b ? View.VISIBLE : View.GONE);
-//    }
 }

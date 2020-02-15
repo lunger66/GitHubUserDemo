@@ -29,7 +29,7 @@ public class MyCustomView extends LinearLayout {
         mBinding = MyCustomViewBinding.inflate(inflater, this, true);
     }
 
-    public void setUser(UserDetailViewMode obj) {
+    public void setUserBinding(UserDetailViewMode obj) {
         mBinding.setUser(obj);
     }
 }

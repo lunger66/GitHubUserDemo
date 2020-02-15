@@ -2,21 +2,23 @@
 <layout>
 
     <data>
+
         <variable
             name="user"
             type="com.hcl.githubuserdemo.viewmode.UserDetailViewMode" />
     </data>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{user.gitHubUserDetail.location}" />
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.gitHubUserDetail.location}" />
+
+    </LinearLayout>
 
 </layout>

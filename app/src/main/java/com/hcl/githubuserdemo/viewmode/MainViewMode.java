@@ -3,7 +3,9 @@ package com.hcl.githubuserdemo.viewmode;
 import android.text.TextUtils;
 import android.util.Log;
 
+
 import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hcl.githubuserdemo.adapters.RecyclerViewAdapter;
@@ -25,21 +27,9 @@ public class MainViewMode {
     private GitHubService service;
     private Headers headers;
 
-    public MainViewMode(RecyclerView recyclerView, final RecyclerViewAdapter recyclerViewAdapter) {
+    public MainViewMode(final RecyclerViewAdapter recyclerViewAdapter) {
 
         this.recyclerViewAdapter = recyclerViewAdapter;
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                if (!recyclerView.canScrollVertically(1) && recyclerViewAdapter.getItemCount() < 100) {
-                    fetchReposNextPage(headers);
-
-                }
-            }
-        });
 
         service = ServiceGenerator.createService(GitHubService.class);
 
@@ -69,7 +59,8 @@ public class MainViewMode {
                 }
             };
 
-    private void fetchReposNextPage(Headers headers) {
+    public void fetchReposNextPage() {
+
         GitHubPagelinksUtils pagelinksUtils =
                 new GitHubPagelinksUtils(headers);
         String next = pagelinksUtils.getNext();
@@ -82,6 +73,10 @@ public class MainViewMode {
 
         Call<List<GitHubUser>> call = service.userListPaginate(next);
         call.enqueue(callback);
+    }
+
+    public RecyclerViewAdapter getRecyclerViewAdapter() {
+        return recyclerViewAdapter;
     }
 
 }

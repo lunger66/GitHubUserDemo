@@ -21,10 +21,10 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private List<GitHubUser> userList = new ArrayList<>();
-    private MainActivity mainActivity;
+    private ItemClickListener itemClickListener;
 
-    public RecyclerViewAdapter(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
+    public RecyclerViewAdapter(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
     public void addItem(List<GitHubUser> list) {
@@ -69,15 +69,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             listItemBinding.frameLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    Intent intent = new Intent(mainActivity, (position % 2) == 1 ? UserDetailActivityMVP.class : UserDetailActivityMVVM.class);
-                    intent.putExtra("login",user.getLogin());
-                    mainActivity.startActivity(intent);
+                    itemClickListener.onClick(user, position);
 
                 }
             });
         }
 
+    }
+
+    public interface ItemClickListener{
+        void onClick(GitHubUser user, int position);
     }
 
 }
