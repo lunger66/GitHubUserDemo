@@ -27,9 +27,9 @@ public class MainViewMode {
     private GitHubService service;
     private Headers headers;
 
-    public MainViewMode(final RecyclerViewAdapter recyclerViewAdapter) {
+    public MainViewMode(RecyclerViewAdapter.ItemClickListener itemClickListener) {
 
-        this.recyclerViewAdapter = recyclerViewAdapter;
+        recyclerViewAdapter = new RecyclerViewAdapter(itemClickListener);
 
         service = ServiceGenerator.createService(GitHubService.class);
 

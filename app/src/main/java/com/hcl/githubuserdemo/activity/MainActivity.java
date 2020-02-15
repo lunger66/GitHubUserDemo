@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupBindings() {
 
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        final RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(new RecyclerViewAdapter.ItemClickListener() {
+
+        final MainViewMode mainViewMode = new MainViewMode(new RecyclerViewAdapter.ItemClickListener() {
             @Override
             public void onClick(GitHubUser user, int position) {
                 Intent intent = new Intent(MainActivity.this, (position % 2) == 1 ? UserDetailActivityMVP.class : UserDetailActivityMVVM.class);
@@ -37,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final MainViewMode mainViewMode = new MainViewMode(recyclerViewAdapter);
         activityMainBinding.setModel(mainViewMode);
 
         activityMainBinding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-                if (!recyclerView.canScrollVertically(1) && recyclerViewAdapter.getItemCount() < 100) {
+                if (!recyclerView.canScrollVertically(1) && mainViewMode.getRecyclerViewAdapter().getItemCount() < 100) {
                     mainViewMode.fetchReposNextPage();
 
                 }
